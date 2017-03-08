@@ -16,17 +16,11 @@ def div(x, y):
         return x * 1.0 / y
 
 
-ops = {
-    '+': add,
-    '-': sub,
-    '*': mul,
-    '/': div
-}
+ops = {'+': add, '-': sub, '*': mul, '/': div}
 op_order = ['+', '-', '*', '/']
 
 
 class Get24(object):
-
     def __init__(self, nums):
         self.nums = nums
         self.num_scenes = []
@@ -89,5 +83,5 @@ class Get24(object):
 
 
 if __name__ == '__main__':
-    ob = Get24([9, 9, 9, 9])
+    ob = Get24([5, 5, 5, 1])
     ob.run()
