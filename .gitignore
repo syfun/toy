@@ -87,3 +87,8 @@ ENV/
 
 # Rope project settings
 .ropeproject
+
+tags
+/out.json
+/login.html
+.idea

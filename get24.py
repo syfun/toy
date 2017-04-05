@@ -4,6 +4,9 @@ from __future__ import print_function
 
 from copy import copy
 
+import click
+
+
 add = lambda x, y: x + y
 sub = lambda x, y: x - y
 mul = lambda x, y: x * y
@@ -82,6 +85,13 @@ class Get24(object):
                 self.count(self.nums, num_scene, op_scene)
 
 
-if __name__ == '__main__':
-    ob = Get24([5, 5, 5, 1])
+@click.command()
+@click.argument('numbers')
+def cli(numbers):
+    numbers = [int(n) for n in numbers.split(',')]
+    ob = Get24(numbers)
     ob.run()
+
+
+if __name__ == '__main__':
+    cli()
