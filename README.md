@@ -12,7 +12,9 @@ python tt.py t2s 1505018750
 ## find chinese string
 
 ```python
-python fc.py ./src --skipexts="jpg,jpeg,png,ico,svg" --onlyexts="html"
+python fc.py find ./src --skipexts="jpg,jpeg,png,ico,svg" --onlyexts="html"
+python fc.py find ./login.html --one true
 
-python fc.py ./login.html --one true
+python fc.py replace ./src --skipexts="jpg,jpeg,png,ico,svg" --onlyexts="html" --file out.json
+python fc.py replace ./login.html --one true --file out.json
 ```
