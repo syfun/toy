@@ -1,20 +1,22 @@
 # toy
 Toy for day.
 
-## time string and timestamp convert
+# Two use methods
 
+### 1. Execute run.py
 ```python
-python tt.py s2t "2017-09-10 12:45:50"
-
-python tt.py t2s 1505018750
+python run.py ...
 ```
 
-## find chinese string
+### 2. setup toy.
 
-```python
-python fc.py find ./src --skipexts="jpg,jpeg,png,ico,svg" --onlyexts="html"
-python fc.py find ./login.html --one true
-
-python fc.py replace ./src --skipexts="jpg,jpeg,png,ico,svg" --onlyexts="html" --file out.json
-python fc.py replace ./login.html --one true --file out.json
+```shell
+$ python setup.py install
+$ toy ...
 ```
+# You can do this
+
+- Time string and timestamp convert.
+- MD5 count.
+- Base64 encode and decode.
+- Simple get24 with 4 numbers.
