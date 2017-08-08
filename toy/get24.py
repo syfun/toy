@@ -1,7 +1,3 @@
-# coding=utf-8
-
-from __future__ import print_function
-
 from copy import copy
 
 import click
@@ -87,11 +83,8 @@ class Get24(object):
 
 @click.command()
 @click.argument('numbers')
-def cli(numbers):
+def get24(numbers):
+    """Get 24, for numbers like 1,2,3,4"""
     numbers = [int(n) for n in numbers.split(',')]
     ob = Get24(numbers)
     ob.run()
-
-
-if __name__ == '__main__':
-    cli()

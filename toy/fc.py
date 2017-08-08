@@ -3,7 +3,7 @@
 Example:
     python fc.py find ./src --skipexts="jpg,jpeg,png,ico,svg" --onlyexts="html"
     python fc.py find ./login.html --one true
-    
+ 
     python fc.py replace ./src --skipexts="jpg,jpeg,png,ico,svg" --onlyexts="html" --file out.json
     python fc.py replace ./login.html --one true --file out.json
 """
@@ -99,7 +99,7 @@ def find(src, skip, skipexts, onlyexts, one):
               help='only extensions, please split with ",".', type=str)
 @click.option('--one', default=False,
               help='one file, not dir.', type=bool)
-def replace(src, file, skip, skipexts, onlyexts,one):
+def replace(src, file, skip, skipexts, onlyexts, one):
     if file:
         with open(file, 'rb') as f:
             kv = json.load(f, 'utf-8')

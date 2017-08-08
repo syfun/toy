@@ -1,7 +1,3 @@
-# coding=utf-8
-
-from __future__ import print_function
-
 import hashlib
 import base64
 import os
@@ -10,12 +6,13 @@ import click
 
 
 @click.command()
-@click.option('-f', default=False, help='Follow a file.')
-@click.option('-b', default=False, help='Print base64 string or not.')
+@click.option('-f', is_flag=True, help='Follow a file or not.')
+@click.option('-b', is_flag=True, help='Print base64 string or not.')
 @click.argument('value')
-def cli(f, b, value):
+def md5(f, b, value):
+    """Get md5."""
     if not f:
-        s = hashlib.md5(value).hexdigest()
+        s = hashlib.md5(value.encode()).hexdigest()
     else:
         if not os.path.exists(value):
             raise Exception('{} not existed.'.format(value))
@@ -30,10 +27,6 @@ def cli(f, b, value):
                 m.update(buffer)
         s = m.hexdigest()
     if b:
-        print(base64.b64encode(s))
+        click.echo(base64.b64encode(s.encode()))
     else:
-        print(s)
-
-
-if __name__ == '__main__':
-    cli()
+        click.echo(s)
