@@ -29,7 +29,7 @@ setup(
     name='Toy',
     version=os.environ.get('VERSION', 'dev'),
     url='https://github.com/syfun/toy',
-    author='YungSung',
+    author='ysun',
     author_email='sunyu418@gmail.com',
     description=__doc__,
     long_description=__doc__,

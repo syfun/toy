@@ -1,4 +1,3 @@
-# coding=utf-8
 """
 Example:
     python fc.py find ./src --skipexts="jpg,jpeg,png,ico,svg" --onlyexts="html"
