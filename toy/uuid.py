@@ -5,10 +5,10 @@ import click
 
 @click.group()
 def uid():
-    """Time tool."""
+    """UUID tool."""
     pass
 
 
-@uuid.command()
+@uid.command()
 def u4():
     print(str(uuid.uuid4()))
