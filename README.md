@@ -1,22 +1,22 @@
 # toy
-Toy for day.
 
-# Two use methods
+A set of commonly used command, such as time tool, md5, etc.
 
-### 1. Execute run.py
-```python
-python run.py ...
-```
+> This is a toy for day.
 
-### 2. setup toy.
 
-```shell
-$ python setup.py install
-$ toy ...
-```
-# You can do this
+## Installation
 
-- Time string and timestamp convert.
-- MD5 count.
-- Base64 encode and decode.
-- Simple get24 with 4 numbers.
+`go get -u github.com/syfun/toy`
+
+## Usage
+
+This set contains:
+
+- Time tool
+- UUID tool
+- MD5 compute
+- Encode and decode base64
+- Random password
+- Go playground
+

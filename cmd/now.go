@@ -1,5 +1,4 @@
-The MIT License (MIT)
-
+/*
 Copyright © 2020 syfun <sunyu418@gmail.com>
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -19,3 +18,35 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
+*/
+package cmd
+
+import (
+	"github.com/spf13/cobra"
+	"time"
+)
+
+// nowCmd represents the now command
+var nowCmd = &cobra.Command{
+	Use:   "now",
+	Short: "Now time.",
+	Long:  `Show now time.`,
+	Run: func(cmd *cobra.Command, args []string) {
+		c := NewConfig(cmd)
+		c.PrintTime(time.Now())
+	},
+}
+
+func init() {
+	timeCmd.AddCommand(nowCmd)
+
+	// Here you will define your flags and configuration settings.
+
+	// Cobra supports Persistent Flags which will work for this command
+	// and all subcommands, e.g.:
+	// nowCmd.PersistentFlags().String("foo", "", "A help for foo")
+
+	// Cobra supports local flags which will only run when this command
+	// is called directly, e.g.:
+	// nowCmd.Flags().BoolP("toggle", "t", false, "Help message for toggle")
+}

@@ -1,5 +1,4 @@
-The MIT License (MIT)
-
+/*
 Copyright © 2020 syfun <sunyu418@gmail.com>
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -19,3 +18,37 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
+*/
+package cmd
+
+import (
+	"github.com/spf13/cobra"
+	"time"
+)
+
+// t2sCmd represents the t2s command
+var t2sCmd = &cobra.Command{
+	Use:   "t2s",
+	Short: "Time to Timestamp.",
+	Args: cobra.ExactArgs(1),
+	Run: func(cmd *cobra.Command, args []string) {
+		c := NewConfig(cmd)
+		t, err := time.ParseInLocation(c.Layout, args[0], c.Location)
+		checkErr(err)
+		c.PrintTime(t)
+	},
+}
+
+func init() {
+	timeCmd.AddCommand(t2sCmd)
+
+	// Here you will define your flags and configuration settings.
+
+	// Cobra supports Persistent Flags which will work for this command
+	// and all subcommands, e.g.:
+	// t2sCmd.PersistentFlags().String("foo", "", "A help for foo")
+
+	// Cobra supports local flags which will only run when this command
+	// is called directly, e.g.:
+	// t2sCmd.Flags().BoolP("toggle", "t", false, "Help message for toggle")
+}
