@@ -1,5 +1,5 @@
 kind: pipeline
-type: docker
+type: ssh
 name: default
 
 trigger:
@@ -7,15 +7,14 @@ trigger:
     - drone
   event:
     - push
+
+server:
+  host: 172.31.39.73
+  user: ubuntu
+  ssh_key:
+    from_secret: ssh_key
+
 steps:
   - name: docker
-    image: plugins/docker
-    settings:
-      repo: dcr.teletraan.io/public/toy
-      tags: latest
-      registry: dcr.teletraan.io
-      username:
-        from_secret: docker_username
-      password:
-        from_secret: docker_password
-      cache_from: dcr.teletraan.io/public/toy:latest
+    commands:
+      - docker build -t dcr.teletraan.io/public/toy:latest .
