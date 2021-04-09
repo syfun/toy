@@ -1,0 +1,14 @@
+kind: pipeline
+type: docker
+name: default
+
+trigger:
+  branch:
+    - drone
+  event:
+    - push
+steps:
+  - name: build
+    image: golang
+    commands:
+      - go build
