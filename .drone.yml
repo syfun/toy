@@ -8,7 +8,13 @@ trigger:
   event:
     - push
 steps:
-  - name: build
-    image: golang
-    commands:
-      - go build
+  - name: docker
+    image: plugins/docker
+    settings:
+      repo: dcr.teletraan.io/public/toy
+      tags: latest
+      registry: dcr.teletraan.io
+      username:
+        from_secret: docker_username
+      password:
+        from_secret: docker_password
