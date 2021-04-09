@@ -18,4 +18,11 @@ steps:
   - name: docker
     commands:
       - docker build -t dcr.teletraan.io/public/toy:latest .
+      - docker login dcr.teletraan.io -u ${USERNAME} -p ${PASSWORD}
       - docker push dcr.teletraan.io/public/toy:latest
+
+    environment:
+      PASSWORD:
+        from_secret: docker_password
+      USERNAME:
+        from_secret: docker_username
