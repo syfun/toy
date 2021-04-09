@@ -13,6 +13,6 @@ ADD . /go/src/app
 RUN GOPROXY=${GOPROXY} go build -o /go/bin/app
 
 # Now copy it into our base image.
-FROM dcr.teletraan.io/public/gcr-distroless-static:latest
+FROM dcr.teletraan.io/public/gcr-distroless-static:latest as prod
 
 COPY --from=build /go/bin/app /

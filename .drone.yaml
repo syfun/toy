@@ -1,0 +1,20 @@
+kind: pipeline
+type: docker
+name: default
+
+trigger:
+  branch:
+    - drone
+  event:
+    - push
+steps:
+  - name: docker
+    image: plugins/docker
+    settings:
+      repo: dcr.teletraan.io/public/toy
+      tags: latest
+      registry: dcr.teletraan.io
+      username:
+        from_secret: docker_username
+      password:
+        from_secret: docker_password
