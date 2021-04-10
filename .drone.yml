@@ -1,6 +1,6 @@
 kind: pipeline
 type: ssh
-name: default
+name: release
 
 trigger:
   event:
@@ -30,7 +30,7 @@ steps:
 ---
 kind: pipeline
 type: ssh
-name: default
+name: dev
 
 trigger:
   branch:
