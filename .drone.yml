@@ -3,23 +3,23 @@ type: ssh
 name: default
 
 trigger:
-  branch:
-    - drone
   event:
-    - push
+    - tag
 
 server:
-  host: 172.31.39.73
-  user: ubuntu
+  host:
+    from_secret: ssh_host
+  user:
+    from_secret: ssh_user
   ssh_key:
     from_secret: ssh_key
 
 steps:
   - name: docker
     commands:
-      - docker build -t dcr.teletraan.io/public/toy:latest .
+      - docker build -t dcr.teletraan.io/public/toy:$DRONE_TAG .
       - docker login dcr.teletraan.io -u $USERNAME -p $PASSWORD
-      - docker push dcr.teletraan.io/public/toy:latest
+      - docker push dcr.teletraan.io/public/toy:$DRONE_TAG
 
     environment:
       PASSWORD:
