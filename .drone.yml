@@ -26,3 +26,37 @@ steps:
         from_secret: docker_password
       USERNAME:
         from_secret: docker_username
+
+---
+kind: pipeline
+type: ssh
+name: default
+
+trigger:
+  branch:
+    include:
+      - dev/v*
+      - v*
+  event:
+    - push
+
+server:
+  host:
+    from_secret: ssh_host
+  user:
+    from_secret: ssh_user
+  ssh_key:
+    from_secret: ssh_key
+
+steps:
+  - name: docker
+    commands:
+      - docker build -t dcr.teletraan.io/public/toy:$DRONE_BRANCH .
+      - docker login dcr.teletraan.io -u $USERNAME -p $PASSWORD
+      - docker push dcr.teletraan.io/public/toy:$DRONE_BRANCH
+
+    environment:
+      PASSWORD:
+        from_secret: docker_password
+      USERNAME:
+        from_secret: docker_username
